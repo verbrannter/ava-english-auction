@@ -81,7 +81,6 @@ def get_deployed_addresses():
     return nft_addr, auction_addr
 
 def encode_constructor_args(nft_addr):
-    """Use `cast abi-encode` to encode the auction constructor args."""
     p = AUCTION_PARAMS
     output = run([
         "cast", "abi-encode",
