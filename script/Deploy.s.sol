@@ -10,7 +10,7 @@ contract DeployScript is Script {
         uint256 deployerKey = vm.envUint("PRIVATE_KEY");
         address deployer = vm.addr(deployerKey);
 
-        // auction parameters (tweak as needed)
+        // auction parameters
         uint256 baseDuration      = 1 hours;
         uint256 absoluteDuration  = 24 hours;
         uint256 extensionWindow   = 5 minutes;
@@ -20,7 +20,7 @@ contract DeployScript is Script {
 
         vm.startBroadcast(deployerKey);
 
-        // Deploy mock NFT and mint token #0 to the deployer
+        // Deploy mock NFT
         MockNFT nft = new MockNFT();
         uint256 tokenId = nft.mint(deployer);
 
