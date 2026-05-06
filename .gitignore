@@ -13,3 +13,9 @@ docs/
 
 # Dotenv file
 .env
+
+# Python
+env/
+
+# Output Files
+results/
