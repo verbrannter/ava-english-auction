@@ -93,7 +93,7 @@ def deploy_and_start_auction(w3, seller_key, chain):
     nft_abi, nft_bytecode = load_artifact(ARTIFACT_NFT)
     auc_abi, auc_bytecode = load_artifact(ARTIFACT_AUCTION)
 
-    nft = deploy_contract(w3, seller_key, chain_id, nft_abi, nft_bytecode, args=("https://algo2018.hiit.fi/tim-roughgarden.jpg",))
+    nft = deploy_contract(w3, seller_key, chain_id, nft_abi, nft_bytecode, args=("https://timroughgarden.org/cce25_1.JPG",))
     print(f"MockNFT: {nft.address}")
     print(f"{explorer}/{nft.address}")
 

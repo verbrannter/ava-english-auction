@@ -25,7 +25,7 @@ CHAINS = {
         "rpc_env": "MONAD_RPC_URL",
         "native": "MON",
         "explorer": "https://testnet.monadvision.com/address",
-        "bidder_funding": Web3.to_wei(1.5, "ether"),
+        "bidder_funding": Web3.to_wei(3, "ether"),
         "is_poa": False,
         "auction_duration": 1800,
     },
