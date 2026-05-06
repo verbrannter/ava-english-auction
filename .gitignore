@@ -16,6 +16,7 @@ docs/
 
 # Python
 env/
+benchmark/__pycache__
 
 # Output Files
 results/

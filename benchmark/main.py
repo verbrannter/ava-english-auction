@@ -217,30 +217,6 @@ def write_csv(rows, timestamp, chain_name):
         writer.writerows(rows)
     return path
 
-def print_summary(rows, native):
-    successes = [r for r in rows if r["status"] == "success"]
-    reverts   = [r for r in rows if r["status"] == "reverted"]
-
-    print(f"total={len(rows)}  success={len(successes)}  reverted={len(reverts)}")
-
-    if successes:
-        latencies = sorted(r["latency_ms"] for r in successes)
-        gas_used  = [r["gas_used"] for r in successes]
-        costs     = [r["cost_wei"] for r in successes]
-        total_cost = sum(costs)
-        print(f"\nlatency (ms): min={min(latencies):.0f} "
-              f"median={statistics.median(latencies):.0f} "
-              f"mean={statistics.mean(latencies):.0f} "
-              f"p95={latencies[int(len(latencies) * 0.95)]:.0f} "
-              f"p99={latencies[int(len(latencies) * 0.99)]:.0f} "
-              f"max={max(latencies):.0f}")
-        print(f"gas: median={int(statistics.median(gas_used))} "
-              f"mean={int(statistics.mean(gas_used))}")
-        print(f"cost per bid ({native}): "
-              f"median={Web3.from_wei(int(statistics.median(costs)), 'ether'):.6f} "
-              f"mean={Web3.from_wei(int(statistics.mean(costs)), 'ether'):.6f}")
-        print(f"total cost ({native}): {Web3.from_wei(total_cost, 'ether'):.4f}\n")
-
 def main():
     args = parse_args()
     load_env()
@@ -282,7 +258,6 @@ def main():
     rows = run_benchmark(w3, auction, bidder_keys, args.bids, chain_id)
     path = write_csv(rows, timestamp, args.chain)
     print(f"wrote {path}\n")
-    print_summary(rows, native)
 
     settle_auction(w3, auction, seller_key, chain_id)
     sweep(w3, bidder_keys, seller.address, auction, chain_id, native)
