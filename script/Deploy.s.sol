@@ -21,7 +21,7 @@ contract DeployScript is Script {
         vm.startBroadcast(deployerKey);
 
         // Deploy mock NFT
-        MockNFT nft = new MockNFT();
+        MockNFT nft = new MockNFT("https://x.com/Tim_Roughgarden/photo");
         uint256 tokenId = nft.mint(deployer);
 
         // Deploy the auction

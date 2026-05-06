@@ -14,8 +14,7 @@ from eth_account import Account
 from config import (
     CHAINS, NUM_BIDDERS, AUCTION_PARAMS,
     GAS_LIMIT_BID, GAS_LIMIT_TRANSFER,
-    RESULTS_DIR, ARTIFACT_NFT, ARTIFACT_AUCTION,
-)
+    RESULTS_DIR, ARTIFACT_NFT, ARTIFACT_AUCTION,)
 
 def load_env(path=".env"):
     with open(path) as f:
@@ -94,7 +93,7 @@ def deploy_and_start_auction(w3, seller_key, chain):
     nft_abi, nft_bytecode = load_artifact(ARTIFACT_NFT)
     auc_abi, auc_bytecode = load_artifact(ARTIFACT_AUCTION)
 
-    nft = deploy_contract(w3, seller_key, chain_id, nft_abi, nft_bytecode)
+    nft = deploy_contract(w3, seller_key, chain_id, nft_abi, nft_bytecode, args=("https://algo2018.hiit.fi/tim-roughgarden.jpg",))
     print(f"MockNFT: {nft.address}")
     print(f"{explorer}/{nft.address}")
 
