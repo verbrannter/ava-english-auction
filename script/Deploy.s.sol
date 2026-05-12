@@ -15,8 +15,8 @@ contract DeployScript is Script {
         uint256 absoluteDuration  = 24 hours;
         uint256 extensionWindow   = 5 minutes;
         uint256 extensionDuration = 5 minutes;
-        uint256 initialPrice      = 0.01 ether;   // 0.01 AVAX
-        uint256 minBidIncrement   = 0.001 ether;  // 0.001 AVAX
+        uint256 initialPrice      = 0.001 ether;   // 0.001 AVAX
+        uint256 minBidIncrement   = 0.0001 ether;  // 0.0001 AVAX
 
         vm.startBroadcast(deployerKey);
 
